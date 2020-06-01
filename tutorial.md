@@ -85,7 +85,7 @@ Si revisamos el archivo que vamos a adoptar como punto de partida, podemos darno
 1. No hay estructura.
 
 Los estilos no están asociados a encabezados, de manera que no hay un _outline_ que utilizar para estructurar nuestro texto. Esto se puede reparar de varias maneras.
-- Crear la estructura en MS word
-- convertir el archivo a markdown y formatearlo con un editor de texto
+- Crear la estructura en MS Word
+- convertir el archivo a Markdown y formatearlo con un editor de texto
 
-2.
+2.llllllll
