@@ -68,4 +68,4 @@ Pero resulta que una vez hemos mirado en la carpeta, hemos encontrado una serie 
 
 ### Markdown
 
-MS Word es un software estupendo para escribir cartas, pero es alarmantemente inadecuado para la producción editorial. Discutiré los problemas en otro sitio, pero de momento baste decir que como muchos softwares propietarios tiene una tendencia acusada a producir problemas de compatibilidad con sus versiones anteriores, un sistema de control de cambios cuyo usuario ideal padece de un insomnio ideal. Dicho esto, es curioso que esté tan extendido. gg
+MS Word es un software estupendo para escribir cartas, pero es alarmantemente inadecuado para la producción editorial. Discutiré los problemas en otro sitio, pero de momento baste decir que como muchos softwares propietarios tiene una tendencia acusada a producir problemas de compatibilidad con sus versiones anteriores, un sistema de control de cambios cuyo usuario ideal padece de un insomnio ideal. Dicho esto, es curioso que esté tan extendido.
