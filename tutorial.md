@@ -64,8 +64,28 @@ En la carpeta "tripa" efectivamente hay un archivo InDesign. Perfecto. El proble
 El mensaje no sólo es desalentador, también es totalmente críptico. ¿Por qué no se puede abrir? ¿El archivo está corrupto? ¿Tiene que ver con la versión de InDesign que estoy usando? Ninguna pista, ninguna idea. Podría probar utilizando la versión de InDesign con la que cree el archivo, pero, demonios, hace diez años de eso, ¿Cuál podría haber sido? Sin contar con que tendría que descargarla e instalarla y sin ninguna garantía de que el asunto funcionase.
 
 Pasamos al plan B entonces, que consiste en buscar la última versión de MS en Word y rehacer la maqueta.
-Pero resulta que una vez hemos mirado en la carpeta, hemos encontrado una serie de archivos (versión2, versiónfinal, versión definitiva... espera, ¿"versiondefinitiva" es más final que "final" ¿o es al revés?). Siempre podemos buscar sencillamente la última versión del documento en word y trabajar con esa. Pero, ¿Es realmente la última o la corrección final fue hecha en InDesign? De ser así, posiblemente podríamos recuperar el log del control de cambios en InDesign... solo que no podemos.  ¿O tal vez la revisión más reciente incluía cosas que descartamos en la versión final del libro? es una posibilidad. ¿No sería bueno que tuviéramos un sistema de control de cambios externo, que no dependiera del software o de la versión del software que estamos utilizando? ¿Y no sería todavía mejor que este sistema de control de cambios pudiera recordar todo lo que ha ocurrido en el proyecto y además almacenarlo en un repositorio remoto dónde pudieran trabajar otros colaboradores sin estorbarse, sencillamente creando versiones alternativas del proyecto que cuando estuviesen listas, se integraran en el proyecto principal? Esto en efecto existe, se llama GitHub y es lo que utilizaremos para almacenar nuestro proyecto. Pero ya hablaremos de ello. Antes, necesitamos resolver qué hacemos con el manuscrito.
+Pero resulta que una vez hemos mirado en la carpeta, hemos encontrado una serie de archivos (versión2, versiónfinal, versión definitiva... espera, ¿"versiondefinitiva" es más final que "final" ¿o es al revés?). Siempre podemos buscar sencillamente la última versión del documento en word y trabajar con esa. Pero, ¿Es realmente la última o la corrección final fue hecha en InDesign? De ser así, posiblemente podríamos recuperar el log del control de cambios en InDesign... solo que no podemos.  ¿O tal vez la revisión más reciente incluía cosas que descartamos en la versión final del libro? Es una posibilidad.
+
+Demasiados problemas. Lo cierto es que necesitamos software en que podamos confiar, lo que equivale a decir que necesitamos herramientas que cumplan los siguientes requisitos:
+
+1. Que sean sostenibles (o sea: que no cambien con el tiempo)
+2. Que nos permitan añadir estructura al contenido
+3. Y separar el contenido de la presentación
+4. Hagan posible un control de versiones eficaz y colaborativo
+5. Una automatización eficiente de nuestro flujo de trabajo (o sea: herramientas que se comuniquen bien entre ellas)
 
 ### Markdown
 
-MS Word es un software estupendo para escribir cartas, pero es alarmantemente inadecuado para la producción editorial. Discutiré los problemas en otro sitio, pero de momento baste decir que como muchos softwares propietarios tiene una tendencia acusada a producir problemas de compatibilidad con sus versiones anteriores, un sistema de control de cambios cuyo usuario ideal padece de un insomnio ideal. Dicho esto, es curioso que esté tan extendido.
+Nuestro primer objetivo entonces será deshacernos de MS Word en beneficio de un formato que nos permita hacer todas estas cosas. Este formato se llama markdown.
+
+### Primer paso: formatear
+
+Si revisamos el archivo que vamos a adoptar como punto de partida, podemos darnos cuenta de alguna cosas:
+
+1. No hay estructura.
+
+Los estilos no están asociados a encabezados, de manera que no hay un _outline_ que utilizar para estructurar nuestro texto. Esto se puede reparar de varias maneras.
+- Crear la estructura en MS word
+- convertir el archivo a markdown y formatearlo con un editor de texto
+
+2.
