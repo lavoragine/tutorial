@@ -34,16 +34,12 @@ Para los efectos de este tutorial necesitaremos tener instalado en nuestro siste
 
 ### El problema
 
-Supongamos que hará unos diez años editamos y publicamos un libro, que ahora queremos reeditar (ese es el caso, aunque esto también podría servir para un libro que estemos a punto de editar ahora). Los archivos siguen almacenados en un disco duro, de modo que todo estaría en recuperarlos, hacer las correcciones que hicieran falta hacer, y volver a imprimir... Fácil, ¿no?
-Pero resulta que esta vez deberíamos también crear un libro electrónico (que en su momento conseguimos utilizando una herramienta de conversión y que ahora, probando el archivo, resulta que funciona a medias en la tablet, funciona en el kindle, y se desarregla en el móvil como el pulcro invitado a una boda a las seis de la mañana después de muchas visitas al buffet de bebidas). Bien, esto todavía no es un problema, por que podemos exportarlo tranquilamente desde InDesign. Pero también sabemos (estos años no han pasado en vano) que convendría hacer el libro electrónico lo más accesible posible, y que tal vez sería una buena idea poder disponer también de una maqueta alternativa para una versión en print on demand. Sin hablar de los metadatos, pero hace diez años ¿sabíamos que eran los metadatos? En fin, muchas preguntas.
-(todos estos problemas, o un subconjunto de ellos, o algún otro que no hemos listado aquí han podido ocurrir. Se sabe, los sistemas documentales son azarosos y dependen de seres humanos que toman decisiones y esas decisiones pueden o no ser consistentes, sin hablar que si no se deja registro de por qué las tomamos, no hay forma de que podamos saberlo, eso si fuimos nosotros quienes tomamos la decisión y no alguien más, otro editor u otro diseñador.)
-Ah, lo olvidaba: tenemos un fin de semana para acabar el proyecto.
+Supongamos que hará unos diez años editamos y publicamos un libro, que ahora queremos o necesitamos reeditar (es el caso, de hecho). Los archivos siguen almacenados en un disco duro, de modo que todo estaría en recuperarlos, abrirlos, hacer las correcciones y ajustes que hicieran falta, y volver a imprimir.
 
-## 2. Configurando el espacio de trabajo
+Pero resulta que esta vez también necesitamos crear (o recrear mejor dicho) un libro electrónico (que en su momento conseguimos utilizando una herramienta de conversión y que ahora, probando el archivo, resulta que funciona en el kindle, funciona a medias en la tablet, y se desarregla en el móvil como el pulcro invitado a una boda a las seis de la mañana después de muchas visitas al buffet de bebidas). Bien, esto todavía no es un problema, por que podemos exportarlo tranquilamente desde InDesign. Pero también sabemos que convendría hacer el libro electrónico lo más accesible posible, y que tal vez sería una buena idea poder disponer también de una maqueta alternativa para una versión en _print on demand_. Sin hablar de los metadatos, pero hace diez años ¿sabíamos que eran los metadatos? En fin, muchas preguntas.
 
-### 2.1 Herramientas & software
+Ah, lo olvidaba: por la razón que sea, tenemos un fin de semana para acabar el proyecto.
 
-### 2.2 Árbol de archivos y repositorio
 
 ## Naturalmente, un manuscrito
 
@@ -55,12 +51,22 @@ En la carpeta "tripa" efectivamente hay un archivo InDesign. Perfecto. El proble
 
 El mensaje no sólo es desalentador, también es totalmente críptico. ¿Por qué no se puede abrir? ¿El archivo está corrupto? ¿Tiene que ver con la versión de InDesign que estoy usando? Ninguna pista, ninguna idea. Podría probar utilizando la versión de InDesign con la que cree el archivo, pero, demonios, hace diez años de eso, ¿Cuál podría haber sido? Sin contar con que tendría que descargarla e instalarla y sin ninguna garantía de que el asunto funcionase.
 
-Pasamos al plan B entonces, que consiste en buscar la última versión de MS en Word y rehacer la maqueta.
-Pero resulta que una vez hemos mirado en la carpeta, hemos encontrado una serie de archivos (versión2, versiónfinal, versión definitiva... espera, ¿"versiondefinitiva" es más final que "final" ¿o es al revés?). Siempre podemos buscar sencillamente la última versión del documento en word y trabajar con esa. Pero, ¿Es realmente la última o la corrección final fue hecha en InDesign? De ser así, posiblemente podríamos recuperar el log del control de cambios en InDesign... solo que no podemos. ¿O tal vez la revisión más reciente incluía cosas que descartamos en la versión final del libro? Es una posibilidad.
+Pasamos al plan B entonces, que consiste en buscar la última versión del manuscrito en MS en Word y rehacer la maqueta.
 
-Demasiados problemas. Lo cierto es que necesitamos software en que podamos confiar, lo que equivale a decir que necesitamos herramientas que cumplan los siguientes requisitos:
+El manuscrito en cuestión se produjo después de un laborioso escaneo: nada extraño considerando que la última edición del libro en cuestión era de hace unos treinta o cuarenta años atrás. Cualquiera que halla escaneado un libro sabe que los resultados distan mucho de definir la palabra prolijidad. El resultado: la corrección tomó un buen tiempo, primero utilizando herramientas automatizadas (Grep, fundamentalmente, pero ya hablaremos de eso), y un trabajo denodado de nuestro corrector. Por tanto, el ir y venir de borradores por correo electrónico fue constante.
 
-1. Que sean sostenibles (o sea: que no cambien con el tiempo)
+Considerando lo anterior, resulta natural que cuando miremos en la carpeta que contiene los borradores, encontremos no uno sino una serie de archivos (versión2, versiónfinal, versión definitiva... espera, ¿"versiondefinitiva" es más final que "final" ¿o es al revés?). Siempre podemos buscar sencillamente la última versión del documento en MS Word y trabajar con esa. Pero, ¿Es realmente la última o la corrección final fue hecha en InDesign? De ser así, posiblemente podríamos recuperar el log del control de cambios en InDesign... solo que no podemos. ¿O tal vez la revisión más reciente incluía cosas que descartamos en la versión final del libro? Es una posibilidad. De paso y ya que estamos, convendría revisar mis intercambios de mail con el corrector del libro.
+
+A todo esto, han pasado un par de horas y estamos sentados frente al ordenador con deseos de tirarlo por la ventana y correr a ahogarnos de chupitos en algún antro infame.
+
+Todos estos problemas, o un subconjunto de ellos, o algún otro que no hemos listado aquí han podido ocurrir. Se sabe, los sistemas documentales son azarosos y dependen de seres humanos que toman decisiones y esas decisiones pueden o no ser consistentes, sin hablar que si no se deja registro de por qué las tomamos, no hay forma de que podamos saberlo, eso si fuimos nosotros quienes tomamos la decisión y no alguien más, otro editor u otro diseñador.
+
+
+Demasiados problemas. Pero lo cierto es que hay maneras de hacer todo esto muchísimo más sostenible, eficiente, agradable y de paso, aumentando el valor del libro final de una manera evidente. Se trata simplemente de pensar en digital. Ok, depende de cambiar algunos hábitos por otros, deshacernos de prejuicios, y también exige un aprendizaje, pero qué clase de editores seríamos si tuviéramos algo en contra del aprendizaje.
+
+Necsitamos, eso sí, software en que podamos confiar, lo que equivale a decir que necesitamos herramientas que cumplan los siguientes requisitos:
+
+1. Que sean sostenibles (o sea: que no cambien con el tiempo o no tengan problemas de compatibilidad reversa)
 2. Que nos permitan añadir estructura al contenido
 3. Y separar el contenido de la presentación
 4. Hagan posible un control de versiones eficaz y colaborativo
@@ -68,7 +74,8 @@ Demasiados problemas. Lo cierto es que necesitamos software en que podamos confi
 
 ### Markdown
 
-Nuestro primer objetivo entonces será deshacernos de MS Word en beneficio de un formato que nos permita hacer todas estas cosas. Este formato se llama markdown.
+MS Word es un software estupendo, pero si lo consideramos bien, no cumple ninguno de estos requisitos: cada versión hace algo más complicado trabajar con la anterior (sin contar con que en los últimos años ha reescrito un par de veces su código y cambiado su interfaz), su manera de añadir estructura a los documentos es mas bien esotérica, su sistema de control de cambios es desesperante, y por último, pese a que se ha trabajado bastante la integración con otros softwares (digamos InDesign), el tipo de código que añade al texto transforma todo el proceso en una invitación al error. Lo que haría casi cualquier diseñador sería trabajar con word la estructura (añadiendo encabezados) y exportar intentando mapear los estilos de word con indesign de la manera más exacta posible. Pero esto, sin duda, añade un tedioso proceso para el cual por otra parte, no tenemos tiempo... ¿Qué hacer?
+
 
 ### Primer paso: formatear
 
