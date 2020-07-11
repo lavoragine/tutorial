@@ -32,7 +32,26 @@ Cosas como estas pasan todo el tiempo. Sean estos los problemas, u otros distint
 Y sin embargo, word es el estándar, lo cual no deja de resultar misterioso. ¿No hay otra manera de hacer las cosas? En efecto la hay. Pero aunque es más eficiente y fluida y nos abre numerosas posibilidades, por alguna razón nadie o casi nadie la utiliza. Ese es el camino que vamos a explorar. Lo que voy a proponer aquí es un flujo de trabajo digital, open source y sostenible, que en mi opinión resuelve muchos de los problemas del workflow tradicional, cuyo principal defecto es que está orientado primariamente a la producción de un material impreso en un entorno digital. Con esto, desde luego, no quiero insinuar que tengo algo en contra del libro impreso, sino más bien que es posible _también_ hacer libros impresos bellamente formateados partiendo de un concepto de producción puramente digital.
 
 
-## 2. Fundamentos, herramientas & requisitos
+
+## 2. Objetivo, herramientas & requisitos
+
+### Objetivo
+
+El propósito de este tutorial será mostrar desde un punto de vista práctico (o como un caso de estudio clásico) como combinar herramientas para crear un libro multiformato, de una mera sostenible y automatizada.
+
+Este es únicamente un posible *workflow* y desde luego que existen muchas otras herramientas y combinaciones. El punto que espero demostrar es únicamente la cantidad de herramientas y flujos de trabajo que existen a nuestra disposición, que pueden transformar el proceso de producción de un libro hasta el punto de permitirnos automatizar todas las tareas, ganando en eficiencia y al mismo tiempo en control sobre nuestros proyectos.
+
+Para mostrar esto, voy a replantear mi proyecto (la edición de *Mío cid campeador* de Vicente Huidobro) y rehacerlo desde el principio. Para ello:
+
+- Crearemos, a partir de los archivos que tenemos, un set de archivos fuente en markDown (texto plano con la extensión ``.md``)
+- Luego crearemos un repositorio para albergar los archivos necesarios
+- Crearemos un archivo formateado en ``yaml`` para almacenar la metadata del libro
+- Pondremos este repositorio (el directorio donde vive nuestro proyecto) bajo control de versiones con ``git``
+- Sincronizaremos este repositorio local con un repositorio remoto en GitHub
+- Utilizando pandoc, crearemos nuestro Epub, y crearemos un archivo ICML para importarlo en indesign
+- Crearemos desde InDesign el PDF final de imprenta
+- Veremos como hacer correcciones, manteniendo un único set de archivos fuente
+
 
 
 ### 2.1 Requisitos
@@ -65,13 +84,14 @@ Dado que de lo que se trata es de probar algo distinto (no se puede esperar un r
 - sostenibilidad
 - interoperatividad
 
+Necesitamos un archivo bien estructurado. Esto garantiza que pueda ser mapeado correctamente para la importación en InDesign, que se pueda generar un epub automáticamente, y que este epub, tal cual ha sido exportado por pandoc, sea accesible.
 
+El hecho de que trabajemos en texto plano (markdown más que un formato, es una convención para etiquetar texto plano), garantiza que estos archivos sean legibles por cualquier ordenador, sea cual sea el sistema operativo y el software que tengan instalado, ahora, hace treinta años o en el siglo XXII. Además, son tan interpretables por máquinas como legibles por humanos, y pesan ridículamente poco comparados con sus colegas con ínfulas, los procesadores de texto
+
+Y por estas razones, son también fácilmente trasladables (de una maquina a otra, de un software a otro, de un lenguaje de etiquetado a otro). Si el archivo está bien estructurado, podemos hacer en efecto lo que queramos con él.
 
 ### Markdown
 
-
-
-eso dice Alber Grenning, justificando un error en su paper sobr
 
 
 
