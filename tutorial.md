@@ -80,23 +80,23 @@ Y deberemos tener instalado en nuestro PC:
 
 ### El espacio de trabajo
 
-Se trata sencillamente de crear un directorio donde residirán los archivos de nuestro proyecto. En mi ordenador será la carpeta ``mioCidCampador``. Dentro de esta carpeta, además crearé una carpeta para las imágenes, otra para los archivos markdown y una ´última que llamaré ``src`` (por source: el archivo fuente o archivo base)
-utilizando la línea de comandos sería así (situandonos con el terminal en el directorio donde queremos crear la carpeta de nuestro proyecto):
+Se trata sencillamente de crear un directorio donde residirán los archivos de nuestro proyecto. En mi ordenador será la carpeta ``mioCidCampador``. Dentro de esta carpeta, además crearé una carpeta para las imágenes, otra para los archivos markdown y una ´última que llamaré ``src`` (por source: el archivo fuente o archivo base). Utilizando la línea de comandos (nos situamos con el terminal en el directorio donde queremos crear la carpeta de nuestro proyecto):
 
 ````
 mkdir mioCidCampeador
 cd mioCidCampeador
 mkdir imagenes, markdown, src
 ````
-Naturalmente, también se puede crear la carpeta haciendo ``click derecho > crear carpeta``, pero para los propósitos de este tutorial, lo haremos con la línea de comandos: es más rápido y por que de esta manera nos familiarizamos con su uso.
+
+Naturalmente, también se puede crear la carpeta haciendo ``click derecho > crear carpeta``, pero para los propósitos de este tutorial, lo haremos con la línea de comandos: es más rápido y de esta manera nos familiarizamos con su uso.
 
 Ponemos nuestro documento (si: mioCidFinal.docx) en la carpeta correspondiente y abrimos el directorio de nuestro proyecto con nuestro editor de texto:
 
 
 
-### markdown
+### Markdown
 
-Dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar totalmente nuestro enfoque. Y lo primero que haremos será convertir nuestro archivo (el que hemos decidido utilizar como archivo base) a Markdown. Las razones para escoger markdown son exactamente las mismas que utilizamos para desechar MS Word: y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
+Dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar totalmente nuestro enfoque. Y lo primero que haremos será convertir nuestro archivo base (mioCidFinal.docx) a Markdown. Las razones para escoger markdown son exactamente las mismas que utilizamos para desechar MS Word: y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
 
 - estructura
 - sostenibilidad
@@ -109,6 +109,8 @@ El hecho de que trabajemos en texto plano (markdown más que un formato, es una 
 Y por estas razones, son también fácilmente trasladables (de una maquina a otra, de un software a otro, de un lenguaje de etiquetado a otro). Si el archivo está bien estructurado, podemos hacer en efecto lo que queramos con él.
 
 manos a la obra.
+
+
 
 
 
