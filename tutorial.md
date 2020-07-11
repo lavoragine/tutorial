@@ -76,8 +76,13 @@ Y deberemos tener instalado en nuestro PC:
 - Jeckyll
 
 
-##  Primer paso: formatear
+##  Configurar el espacio de trabajo y formatear
 
+### El espacio de trabajo
+
+Se trata sencillamente de crear un directorio donde residirán los archivos de nuestro proyecto. Para hacerlo fácil, lo primero será crear un directorio
+
+### markdown
 Dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar totalmente nuestro enfoque. Y lo primero que haremos será convertir nuestro archivo (el que hemos decidido utilizar como archivo base) a Markdown. Las razones para escoger markdown son exactamente las mismas que utilizamos para desechar MS Word: y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
 
 - estructura
@@ -90,7 +95,9 @@ El hecho de que trabajemos en texto plano (markdown más que un formato, es una 
 
 Y por estas razones, son también fácilmente trasladables (de una maquina a otra, de un software a otro, de un lenguaje de etiquetado a otro). Si el archivo está bien estructurado, podemos hacer en efecto lo que queramos con él.
 
-### Markdown
+manos a la obra.
+
+
 
 
 
