@@ -37,9 +37,9 @@ Y sin embargo, word es el estándar, lo cual no deja de resultar misterioso. ¿N
 
 ### Objetivo
 
-El propósito de este tutorial será mostrar desde un punto de vista práctico (o como un caso de estudio clásico) como combinar herramientas para crear un libro multiformato, de una mera sostenible y automatizada.
+El propósito de este tutorial será mostrar desde un punto de vista práctico  como combinar herramientas para crear un libro multiformato, de una mera sostenible y automatizada, y que, de paso, resuelve punto por punto nuestro problema..
 
-Este es únicamente un posible *workflow* y desde luego que existen muchas otras herramientas y combinaciones. El punto que espero demostrar es únicamente la cantidad de herramientas y flujos de trabajo que existen a nuestra disposición, que pueden transformar el proceso de producción de un libro hasta el punto de permitirnos automatizar todas las tareas, ganando en eficiencia y al mismo tiempo en control sobre nuestros proyectos.
+Este es únicamente un posible *workflow* y desde luego que existen muchas otras herramientas y combinaciones. El punto que espero demostrar es únicamente la cantidad de herramientas que existen a nuestra disposición, que pueden transformar el proceso de producción de un libro hasta el punto de permitirnos automatizar todas las tareas, ganando en eficiencia y al mismo tiempo en control sobre nuestros proyectos.
 
 Para mostrar esto, voy a replantear mi proyecto (la edición de *Mío cid campeador* de Vicente Huidobro) y rehacerlo desde el principio. Para ello:
 
@@ -48,9 +48,10 @@ Para mostrar esto, voy a replantear mi proyecto (la edición de *Mío cid campea
 - Crearemos un archivo formateado en ``yaml`` para almacenar la metadata del libro
 - Pondremos este repositorio (el directorio donde vive nuestro proyecto) bajo control de versiones con ``git``
 - Sincronizaremos este repositorio local con un repositorio remoto en GitHub
-- Utilizando pandoc, crearemos nuestro Epub, y crearemos un archivo ICML para importarlo en indesign
+- Utilizando pandoc, crearemos nuestro Epub, y crearemos un archivo ICML para importarlo en inDesign
 - Crearemos desde InDesign el PDF final de imprenta
-- Veremos como hacer correcciones, manteniendo un único set de archivos fuente
+- Veremos como hacer correcciones, manteniendo un único set de archivos fuente y guardando un registro histórico de correcciones.
+- y por último, crearemos una página web con los archivos de nuestro libro.
 
 
 
@@ -75,28 +76,9 @@ Y deberemos tener instalado en nuestro PC:
 - MS Word
 - Jeckyll
 
+Instalar software es tedioso. De momento, vamos a sumir que (como yo) tenéis todo el software instalado en vuestro ordenador.
 
-##  Configurar el espacio de trabajo y formatear
-
-### El espacio de trabajo
-
-Se trata sencillamente de crear un directorio donde residirán los archivos de nuestro proyecto. En mi ordenador será la carpeta ``mioCidCampador``. Dentro de esta carpeta, además crearé una carpeta para las imágenes, otra para los archivos markdown y una ´última que llamaré ``src`` (por source: el archivo fuente o archivo base). Utilizando la línea de comandos (nos situamos con el terminal en el directorio donde queremos crear la carpeta de nuestro proyecto):
-
-````
-mkdir mioCidCampeador
-cd mioCidCampeador
-mkdir imagenes, markdown, src
-````
-
-Naturalmente, también se puede crear la carpeta haciendo ``click derecho > crear carpeta``, pero para los propósitos de este tutorial, lo haremos con la línea de comandos: es más rápido y de esta manera nos familiarizamos con su uso.
-
-Ponemos nuestro documento (si: mioCidFinal.docx) en la carpeta correspondiente y abrimos el directorio de nuestro proyecto con nuestro editor de texto:
-
-
-
-### Markdown
-
-Dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar totalmente nuestro enfoque. Y lo primero que haremos será convertir nuestro archivo base (mioCidFinal.docx) a Markdown. Las razones para escoger markdown son exactamente las mismas que utilizamos para desechar MS Word: y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
+Y dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar nuestro enfoque y utilizar Markdown como formato base, en lugar del consabido MS Word.  Las razones para escoger markdown son exactamente las mismas que para desechar MS Word y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
 
 - estructura
 - sostenibilidad
@@ -109,6 +91,54 @@ El hecho de que trabajemos en texto plano (markdown más que un formato, es una 
 Y por estas razones, son también fácilmente trasladables (de una maquina a otra, de un software a otro, de un lenguaje de etiquetado a otro). Si el archivo está bien estructurado, podemos hacer en efecto lo que queramos con él.
 
 manos a la obra.
+
+
+##  Configurar el espacio de trabajo y formatear
+
+### El espacio de trabajo
+
+Lo primero será crear el directorio donde van a vivir los archivos de mi proyecto. En mi ordenador será la carpeta ``mioCidCampeador``. Dentro de esta carpeta, además crearé una carpeta para las imágenes, otra para los archivos markdown y una última que llamaré ``src`` (por "source": el archivo fuente o archivo base). para ello, nos situamos con el terminal en el directorio donde queremos crear la carpeta de nuestro proyecto), y escribimos:
+
+````
+mkdir mioCidCampeador
+cd mioCidCampeador
+mkdir imagenes, markdown, src
+````
+
+Naturalmente, también se puede crear la carpeta haciendo ``click derecho > crear carpeta``, pero para los propósitos de este tutorial, utilizaremos la línea de comandos: es más rápido y de esta manera nos familiarizamos con su uso.
+
+Una vez creada nuestra carpeta, podemos poner nuestro documento (si: mioCidFinal.docx) en la carpeta correspondiente y abrimos el directorio de nuestro proyecto con nuestro editor de texto:
+
+![projectFolderEnAtom](imgs/abrirCarpetaDeTrabajoConElEditorDeTexto.png)
+
+y navegamos con el terminal a la carpeta ``src``, donde tenemos el archivo ``mioCidFinal.docx``
+
+
+### Markdown
+
+De momento tenemos una carpeta, una serie de subcarpetas, y un único archivo. Pero, ¿no íbamos a partir desde markdown? En efecto. Por tanto, lo primero que haremos será convertir el documento base (mioCidFinal.docx) a markdown. Y aquí es dónde entra Pandoc.
+
+Pandoc es un software de linea de comandos (CLI), creado y mantenido por John MacFarlane, profesor de Filosofía en la Universidad de California en Berkeley. Muy brevemente, se puede describir como un conversor universal de formatos de texto. Pero es mucho más. Y puesto que fue concebido por un académico y con el objetivo de servir de herramientas a académicos, cuenta entre sus virtudes la capacidad de manejar metadata, referencias bibliograficas y sistemas de citación que mejoran casi cualquier herramienta dedicada a estas tareas. hablaremos más adelante más en detalles de qué hace y cómo lo hace, de momento (y como demostración de lo que es capaz), vamos a navegar a la carpeta ``src``, que contiene el documento ``mioCidFinal.docx`` y vamos a abrir la línea de comandos ahí. En Windows, sencillamente hay que abrir la carpeta correspondiente y hacer click en Archivo > abrir Windows Power Shell:
+
+![linea de comandos](imgs/lineaDeComandos.png)
+
+y cuando se abra el Power Shell, vamos a escribir:
+
+````
+ pandoc mioCidFinal.docx -f docx+empty_paragraphs+styles -t markdown -s --wrap=none --atx -s  -o mioCidCampeador.md
+````
+
+Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidCampeador.md``) ha aparecido en ella.
+
+¿Qué hemos hecho? Paso por paso, es lo siguiente:
+
+- hemos invocado el programa que vamos a utilizar (``pandoc``)
+- le hemos dicho a qué archivo tiene que aplicar las opciones que vamos a definir (``mioCidFinal.docx``)
+- le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las lineas vacías; y ``styles``, le dice que conserve los estilos personalizados en wordd (si eliminamos esta opción, Pandoc va a preservar los estilos locales  y los estilos de encabezados, traduciéndolos a etiquetas en markdown, pero va a ignorar todos los otros estilos que hubieramos podido definir en el documento Word)
+-
+
+
+
 
 
 
