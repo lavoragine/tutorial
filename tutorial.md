@@ -10,7 +10,7 @@ El mensaje no solo es desalentador, también es totalmente opaco. ¿Por qué no 
 
 Vamos, pues, al plan B. Que no es otro que localizar la última versión del manuscrito en MS en Word y rehacer la maqueta.
 
-El manuscrito en cuestión se produjo después de un laborioso escaneo: nada extraño considerando que la última edición del libro en cuestión era de hace unos treinta o cuarenta años atrás. Cualquiera que halla escaneado un libro sabe que los resultados distan mucho de definir la palabra prolijidad. El resultado: la corrección tomó un  tiempo, primero utilizando herramientas automatizadas (grep, fundamentalmente, pero ya hablaremos de eso), y un trabajo denodado de nuestro corrector. Por tanto, el ir y venir de borradores por correo electrónico fue profuso.
+El manuscrito en cuestión se produjo después de un laborioso escaneo: nada extraño considerando que la última edición del libro en cuestión era de hace unos treinta o cuarenta años atrás. Cualquiera que halla escaneado un libro sabe que los resultados distan mucho de definir la palabra prolijidad. El resultado: la corrección tomó un tiempo, primero utilizando herramientas automatizadas (grep, fundamentalmente, pero ya hablaremos de eso), y un trabajo denodado de nuestro corrector. Por tanto, el ir y venir de borradores por correo electrónico fue profuso.
 
 Considerando lo anterior, resulta natural (preocupante, pero natural) que cuando miramos en la carpeta que contiene los borradores, encontremos no uno sino una serie de archivos (versión2, versiónfinal, versión definitiva... espera, ¿"versiondefinitiva" es más final que "final" ¿o es al revés?). Siempre podemos buscar sencillamente la última versión del documento en MS Word y trabajar con esa. Pero, ¿es realmente la última o la corrección final fue hecha en InDesign? De ser así, posiblemente podríamos recuperar el log del control de cambios en InDesign... solo que no podemos. ¿O tal vez la revisión más reciente incluía cosas que descartamos en la versión final del libro? Es una posibilidad. De paso y ya que estamos, convendría también revisar los correos electrónicos con el corrector.
 
@@ -37,7 +37,7 @@ Y sin embargo, word es el estándar, lo cual no deja de resultar misterioso. ¿N
 
 ### Objetivo
 
-El propósito de este tutorial será mostrar desde un punto de vista práctico  como combinar herramientas para crear un libro multiformato, de una mera sostenible y automatizada, y que, de paso, resuelve punto por punto nuestro problema..
+El propósito de este tutorial será mostrar desde un punto de vista práctico como combinar herramientas para crear un libro multiformato, de una mera sostenible y automatizada, y que, de paso, resuelve punto por punto nuestro problema..
 
 Este es únicamente un posible *workflow* y desde luego que existen muchas otras herramientas y combinaciones. El punto que espero demostrar es únicamente la cantidad de herramientas que existen a nuestra disposición, que pueden transformar el proceso de producción de un libro hasta el punto de permitirnos automatizar todas las tareas, ganando en eficiencia y al mismo tiempo en control sobre nuestros proyectos.
 
@@ -78,7 +78,7 @@ Y deberemos tener instalado en nuestro PC:
 
 Instalar software es tedioso. De momento, vamos a sumir que (como yo) tenéis todo el software instalado en vuestro ordenador.
 
-Y dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar nuestro enfoque y utilizar Markdown como formato base, en lugar del consabido MS Word.  Las razones para escoger markdown son exactamente las mismas que para desechar MS Word y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
+Y dado que de lo que se trata es de probar algo distinto (no se puede esperar un resultado diferente si hacemos lo mismo), vamos a cambiar nuestro enfoque y utilizar Markdown como formato base, en lugar del consabido MS Word. Las razones para escoger markdown son exactamente las mismas que para desechar MS Word y se pueden resumir en los tres mantras de cualquier workflow editorial en un entorno digital:
 
 - estructura
 - sostenibilidad
@@ -93,7 +93,7 @@ Y por estas razones, son también fácilmente trasladables (de una maquina a otr
 manos a la obra.
 
 
-##  Configurar el espacio de trabajo
+## Configurar el espacio de trabajo
 
 ### El espacio de trabajo
 
@@ -102,20 +102,16 @@ Lo primero será crear el directorio donde van a vivir los archivos de mi proyec
 ````
 mkdir mioCidCampeador
 cd mioCidCampeador
-mkdir imagenes, markdown, src
+mkdir imagenes, markdown, src, indd, icml,
 ````
 
 Naturalmente, también se puede crear la carpeta haciendo ``click derecho > crear carpeta``, pero para los propósitos de este tutorial, utilizaremos la línea de comandos: es más rápido y de esta manera nos familiarizamos con su uso.
 
-Una vez creada nuestra carpeta, podemos poner nuestro documento (si: mioCidFinal.docx) en la carpeta correspondiente y abrimos el directorio de nuestro proyecto con nuestro editor de texto:
-
-![projectFolderEnAtom](imgs/abrirCarpetaDeTrabajoConElEditorDeTexto.png)
-
-y navegamos con el terminal a la carpeta ``src``, donde tenemos el archivo ``mioCidFinal.docx``
+Una vez creada nuestra carpeta, podemos poner nuestro documento (si: mioCidFinal.docx) en la carpeta correspondiente (``src``). Este es el punto de partida de nuestro proyecto.
 
 ## Formatear
 
-### Markdown
+### Preparar el MS
 
 De momento tenemos una carpeta, una serie de subcarpetas, y un único archivo. Pero, ¿no íbamos a partir desde markdown? En efecto. Por tanto, lo primero que haremos será convertir el documento base (mioCidFinal.docx) a markdown. Y aquí es dónde entra Pandoc.
 
@@ -126,7 +122,7 @@ Pandoc es un software de linea de comandos (CLI), creado y mantenido por John Ma
 y cuando se abra el Power Shell, vamos a escribir:
 
 ````
- pandoc mioCidFinal.docx -f docx+empty_paragraphs -t markdown  --wrap=none --atx  -o mioCidCampeador.md
+ pandoc mioCidFinal.docx -f docx+empty_paragraphs -t markdown --wrap=none --atx -o mioCidCampeador.md
 ````
 
 Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidCampeador.md``) ha aparecido en ella.
@@ -135,10 +131,42 @@ Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidC
 
 - hemos invocado el programa que vamos a utilizar (``pandoc``)
 - le hemos dicho a qué archivo tiene que aplicar las opciones que vamos a definir (``mioCidFinal.docx``)
-- le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las líneas vacías.  Pandoc va a preservar todos los estilos predeterminados (encabezados) y estilos locales (itálicas y negritas), traduciéndolos a etiquetas en markdown, pero va a ignorar todos los estilos personalizados que hubiéramos podido definir en el documento (en caso de que quisieramos conservar los estilos personalizados de word, hay una opción: ``+styles``).
+- le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las líneas vacías. Pandoc va a preservar todos los estilos predeterminados (encabezados) y estilos locales (itálicas y negritas), traduciéndolos a etiquetas en markdown, pero va a ignorar todos los estilos personalizados que hubiéramos podido definir en el documento (en caso de que quisieramos conservar los estilos personalizados de word, hay una opción: ``+styles``).
 - le hemos dicho a qué formato tiene que convertir el documento: ``-t markdown``, a markdown.
 - Le hemos dicho que elimine el ajuste de línea (word wrap) o saltos de línea no semánticos: ``wrap=none``
 - Que uniforme los encabezados (markdown tiene dos maneras de etiquetar encabezados, atx o setext-style headers): ``--atx``
 - y que con toda esta información, cree un archivo llamado ``mioCidCampeador.md``
 
 Pandoc ha hecho todo eso en un par de segundos.
+
+### Markdown
+
+Ahora podemos abrir el directorio de nuestro proyecto con nuestro editor de texto y veremos el árbol de carpetas:
+
+![projectFolderEnAtom](imgs/abrirCarpetaDeTrabajoConElEditorDeTexto.png)
+
+Abrimos el archivo mioCidCampeador.md (doble click en el panel de la derecha) y
+podemos ver lo que pandoc ha hecho. Los encabezados están correctamente distribuidos a lo largo del documento, el formato local se ha preservado. Incluso, podemos ver que Pandoc ha inerpretado una tabla en el documento Word y la traslado a markdown correctamente:
+
+![tablas (convertidas desde Word) en markdown](imgs/tablasEnMarkdown.png)
+
+Como en cualquier manuscrito, es probable que halla numerosas correcciones que hacer, pero aquí tenemos una buena base. Volveremos al tema de las correcciones más adelante
+
+De momento, vamos a sumir que la conversión fue exitosa. Podemos abrir el Outline del documento y verificar la estructura del documento, eso es ahora lo que más nos importa.
+Markdown tiene una sintaxis extremadamente sencilla de aprender. Si miramos el documento, podemos ver que:
+- los encabezados están marcados por hashes (#): ``# este es un título de primer nivel``, ``## este es un título de segundo nivel``, etc...
+- las itálicas corresponden a las palabras (o frases) encerradas entre dos asteriscos (*palabra_italicas*) y que las negritas lo están entre dos asteriscos (**esta_es_una_palabra_en_negritas**).
+- Las tablas se construyen con una combinación de guiones y barras verticales.
+- Las listas numeradas, con el número, un punto y un espacio (``1. item_de_lista``) y las listas sin numerar con guión y espacio (- item_de_lista_sin_numerar)
+
+![ejemplo sintaxis markdown](imgs/markdown_ejemplo.png)
+
+Para una referencia de la sintaxis markdown, [aquí](http://https://pandoc.org/MANUAL.html#pandocs-markdown) está la página de referencia.
+
+### Metadata
+
+Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluir la metadata dentro del archivo markdown utilizando un ``yaml block``
+
+[Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por máquinas como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión yaml (``matadata.yaml``). Para nuestro caso, lo integraremos como un Yaml Block dentro de nuestro archivo markdown. la forma standard de hacerlo es al principio del documento.
+
+![yaml block](imgs/yaml_block.png)
