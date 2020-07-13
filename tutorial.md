@@ -93,7 +93,7 @@ Y por estas razones, son también fácilmente trasladables (de una maquina a otr
 manos a la obra.
 
 
-##  Configurar el espacio de trabajo y formatear
+##  Configurar el espacio de trabajo
 
 ### El espacio de trabajo
 
@@ -113,6 +113,7 @@ Una vez creada nuestra carpeta, podemos poner nuestro documento (si: mioCidFinal
 
 y navegamos con el terminal a la carpeta ``src``, donde tenemos el archivo ``mioCidFinal.docx``
 
+## Formatear
 
 ### Markdown
 
@@ -125,7 +126,7 @@ Pandoc es un software de linea de comandos (CLI), creado y mantenido por John Ma
 y cuando se abra el Power Shell, vamos a escribir:
 
 ````
- pandoc mioCidFinal.docx -f docx+empty_paragraphs+styles -t markdown -s --wrap=none --atx -s  -o mioCidCampeador.md
+ pandoc mioCidFinal.docx -f docx+empty_paragraphs -t markdown  --wrap=none --atx  -o mioCidCampeador.md
 ````
 
 Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidCampeador.md``) ha aparecido en ella.
@@ -134,18 +135,10 @@ Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidC
 
 - hemos invocado el programa que vamos a utilizar (``pandoc``)
 - le hemos dicho a qué archivo tiene que aplicar las opciones que vamos a definir (``mioCidFinal.docx``)
-- le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las lineas vacías; y ``styles``, le dice que conserve los estilos personalizados en wordd (si eliminamos esta opción, Pandoc va a preservar los estilos locales  y los estilos de encabezados, traduciéndolos a etiquetas en markdown, pero va a ignorar todos los otros estilos que hubieramos podido definir en el documento Word)
--
+- le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las líneas vacías.  Pandoc va a preservar todos los estilos predeterminados (encabezados) y estilos locales (itálicas y negritas), traduciéndolos a etiquetas en markdown, pero va a ignorar todos los estilos personalizados que hubiéramos podido definir en el documento (en caso de que quisieramos conservar los estilos personalizados de word, hay una opción: ``+styles``).
+- le hemos dicho a qué formato tiene que convertir el documento: ``-t markdown``, a markdown.
+- Le hemos dicho que elimine el ajuste de línea (word wrap) o saltos de línea no semánticos: ``wrap=none``
+- Que uniforme los encabezados (markdown tiene dos maneras de etiquetar encabezados, atx o setext-style headers): ``--atx``
+- y que con toda esta información, cree un archivo llamado ``mioCidCampeador.md``
 
-
-
-
-
-
-
-
-
-
-
-
-Lo que hace pandoc es mantener local formatting (italic y bold) y suprimir toda la información extra (que de hecho no necesitamos)
+Pandoc ha hecho todo eso en un par de segundos.
