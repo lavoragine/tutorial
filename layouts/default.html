@@ -15,6 +15,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
+
           <nav>
             <a href="{{ site.baseurl }}/">Blog</a>
             <a href="{{ site.baseurl }}/acerca-de">Acerca de</a>                   
@@ -22,13 +23,11 @@
           </nav>
           
           <h1 id="project_title">Hacia un workflow digital, sostenible y open source en edición independiente (un caso de estudio)</h1>
+
           <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
 
           {% if site.show_downloads %}
-            <section id="downloads">
-              <a class="zip_download_link" href="{{ site.github.zip_url }}">Descarga este proyecto como archivo .zip </a>
-              <a class="tar_download_link" href="{{ site.github.tar_url }}">Descarga este proyecto como tar.gz </a>
-            </section>
+            
           {% endif %}
         </header>
     </div>

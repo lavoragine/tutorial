@@ -127,7 +127,9 @@ y cuando se abra el Power Shell, vamos a escribir:
 
 Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidCampeador.md``) ha aparecido en ella.
 
-¿Qué hemos hecho? Paso por paso, es lo siguiente:
+
+¿Qué hemos hecho? Si examinamos el comando que acabamos de escribir paso por paso, es lo siguiente:
+
 
 - hemos invocado el programa que vamos a utilizar (``pandoc``)
 - le hemos dicho a qué archivo tiene que aplicar las opciones que vamos a definir (``mioCidFinal.docx``)
