@@ -238,7 +238,7 @@ Ya sabemos como Pandoc puede convertir automáticamente un documento markdown a 
 
 Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluirla dentro del archivo markdown utilizando un ``yaml block``.
 
-Un ``yaml block`` se escribe al principio del archivo markdown, utilizando tres guiones para encapsularlo:
+[Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por software como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión ``.yaml`` (``matadata.yaml``, por ejemplo). Para nuestro caso, lo integraremos dentro de nuestro archivo markdown. Un ``yaml block`` se escribe al principio del archivo markdown, utilizando tres guiones para encapsularlo:
 
 ````
 ---
@@ -246,24 +246,67 @@ title: mi libro
 author: yo mismo
 date: 07-28-2020
 ---
+
 ````
-Este sería el ejemplo más elemental de ``yaml block``. A partir de esta información, pandoc puede poblar las etiquetas ``title`` y ``author`` en el ``header`` y también podrá utilizar esta información para crear un bloque de título en HTML con el título del documento, el autor, y la fecha en que fue creado. ¿Por que es bueno que hagamos esto? Porque la información que incluyamos en la cabecera del documento HTML una vez sea accesible en la web, es la información que utilizará el motor de búsqueda para indexar el documento. Una página web sin metadata es una página web invisible. 
+
+Este sería el ejemplo más elemental. A partir de esta información, pandoc puede poblar las etiquetas ``title`` y ``author`` en el ``header`` y también podrá utilizar esta información para crear un bloque de título en HTML con el título del documento, el autor, y la fecha en que fue creado. ¿Por que es bueno que hagamos esto? Porque la información que incluyamos en la cabecera del documento HTML una vez sea accesible en la web, es la información que utilizará el motor de búsqueda para indexar el documento. Una página web sin metadata es una página web invisible.
+
 De la misma manera, Pandoc utiliza la metadata que especifiquemos para incorporarla en el archivo epub, de manera que luego esté disponible para que el dispositivo pueda mostrárnosla (en la biblioteca del aparato, por ejemplo).
 
+En síntesis, Yaml es una manera de mapear etiquetas o variables con valores.
 
+`` title`` (etiqueta) `` : Mío Cid Campeador`` (valor asignado a esa etiqueta)
 
+Hay que notar que no hace falta utilizar comillas. Pero si el valor que estamos asignando contiene comillas (o cualquier caracter especial) es mejor entrecomillarlo (y utilizar las comillas simples para el texto que estamos asignando):
 
+``title: "Mío Cid Campeador, una 'relectura' de la historia del Cid"``
 
+También es importante tener en cuenta que Yaml es una manera de estructurar datos, no un lenguaje reservado o una especificación para expresar esos datos. Lo que significa que en realidad podemos utilizar las etiquetas o variables que necesitemos de manera arbitraria. Pandoc puede interpretar un conjunto importante de etiquetas, pero si nos parece insuficiente, podemos editar las plantillas y utilizar las que necesitemos (de esto hablaremos más adelante)
 
-La etiqueta ``title``
+Ahora volvamos a nuestro libro. En la misma carpeta donde tenemos el archivo ``mioCidCampeador.md`` vamos a crear un nuevo archivo y le vamos a llamar ``metadata.yaml``. En el vamos a escribir lo siguiente:
 
+````
+---
+title: Mío Cid Campeador
+subtitle: Hazaña
+author: Vicente Huidobro
+creator:
+- role: editor
+  text: Lucho Tapia
 
-[Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por máquinas como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión yaml (``matadata.yaml``). Para nuestro caso, lo integraremos como un Yaml Block dentro de nuestro archivo markdown. La forma standard de hacerlo es al principio del documento.
+identifier:
+- scheme: ISBN-13
+  text: 978-84-939173-9-5
 
-![yaml block](imgs/yaml_block.png)
+date: 2020-04-07
 
-¿Qué estamos haciendo aquí?
+description: "Publicada en Madrid en 1931, esta novela de Huidobro es una réplica del clásico Cantar De Mío Cid, en la que propone una reinvención del mítico héroe medieval español. A partir de una conversación con el actor norteamericano Douglas Fairbanks, quien lo entusiasma con la figura del Cid y le pide una recopilación de datos, el poeta se documenta abundantemente y descubre, en su propia genealogía, un lejano vínculo con el legendario Rodrigo. La fascinación crece y Huidobro, a su manera se reencarna en él, se viste con su armadura y se lanza en esta epopeya por los campos de batalla de la creación, derribando, una vez más, las rigideces expresivas contra las que siempre luchó y logrando una narración de vanguardia. Huidobro legitima su relato, tal como él mismo lo señala en el prefacio, como 'la verdadera historia del Mío Cid Campeador, escrita por el último de sus descendientes'"
 
-La sintaxis de Yaml es muy sencilla y se basa en la asignación de valores a determinadas etiquetas (o variables). En este caso, tenemos la etiqueta 'title' (título) con el valor: "Mío Cid Campeador"; la etiqueta 'creator' (creador) a la que asignamos dos valores (role, que es el tipo de creador, y 'text' que es *contenido* de la etiqueta; en Yaml podemos también definir listas de metadata para especificar valores).
+publisher: La Vorágine
+keywords: literatura chilena, surrealismo, creacionismo, literatura contemporanea
+rights: © 2020 La vorágine, CC BY-NC
+lang: es-ES
+cover-image: ../imagenes/el_mio_cid_campeador.jpg
+css: ../epub/style.css
+toc: true
+---
+````
+Lo guardamos y luego volvemos al Power Shell y escribimos:
 
-###
+``pandoc MioCidCampeador.md metadata.yaml -f markdown -s -t html -o MioCidCampeador.html``
+
+y lo que obtendremos será esto:
+
+![metadata incluida en html via yaml file](imgs/html_con_metadata_en_head.png)
+
+Nótese que también podemos generar un archivo epub:
+
+``pandoc MioCidCampeador.md metadata.yaml -f markdown -s -t epub3 -o MioCidCampeador.epub``
+
+y el resultado (si abrimos el epub y miramos en el archivo content.opf ):
+
+![epub metadata via yaml](/imgs/epub_metadata_via_yaml.png)
+
+En primer caso (conversión a html) pandoc creaba etiquetas ``<meta name="``etiqueta``" content="``valor_de_la_etiqueta``" />`` (``<meta name="author" content="Vicente Huidobro" />``), que es la manera standar para incluir metadata en html para la web. En el segundo caso, Pandoc introdujo la metadata utilizando los cuatro vocabularios reservados para metadata en la especificación epub3 (dcterms, marc relators, media y onix). Todo partiendo de un mismo archivo.
+
+Más adelante veremos otros usos de Yaml y volveremos sobre la generación de Epubs.
