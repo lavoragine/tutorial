@@ -265,6 +265,7 @@ También es importante tener en cuenta que Yaml es una manera de estructurar dat
 
 Ahora volvamos a nuestro libro. En la misma carpeta donde tenemos el archivo ``mioCidCampeador.md`` vamos a crear un nuevo archivo y le vamos a llamar ``metadata.yaml``. En el vamos a escribir lo siguiente:
 
+
 ````
 ---
 title: Mío Cid Campeador
@@ -291,6 +292,7 @@ css: ../epub/style.css
 toc: true
 ---
 ````
+
 Lo guardamos y luego volvemos al Power Shell y escribimos:
 
 ``pandoc MioCidCampeador.md metadata.yaml -f markdown -s -t html -o MioCidCampeador.html``
