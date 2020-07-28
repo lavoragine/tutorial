@@ -227,11 +227,12 @@ Si ahora reescribimos la orden:
 ````
 
 2) Y nos va a arrojar un mensaje de error:
-   ````
-   [WARNING] This document format requires a nonempty <title> element.
-  Defaulting to 'MioCidCampeador' as the title.
-  To specify a title, use 'title' in metadata or --metadata title="...".
-  ````
+````
+[WARNING] This document format requires a nonempty <title> element.
+Defaulting to 'MioCidCampeador' as the title.
+To specify a title, use 'title' in metadata or --metadata title="...".
+````
+
 Este mensaje significa que Pandoc ha sido capaz de crear el documento, pero dado que no le hemos indicado qué metadata utilizar, lo ha construido a partir de sus valores por defecto. Como, según la especificación, lo único imprescindible es que un documento tenga un título, Pandoc ha creado un título a partir del nombre del archivo.
 
 ### Metadata
@@ -267,6 +268,7 @@ También es importante tener en cuenta que Yaml es una manera de estructurar dat
 
 Ahora volvamos a nuestro libro. En la misma carpeta donde tenemos el archivo ``mioCidCampeador.md`` vamos a crear un nuevo archivo y le vamos a llamar ``metadata.yaml``. En el vamos a escribir lo siguiente:
 
+
 ````
 ---
 title: Mío Cid Campeador
@@ -293,6 +295,7 @@ css: ../epub/style.css
 toc: true
 ---
 ````
+
 Lo guardamos y luego volvemos al Power Shell y escribimos:
 
 ``pandoc MioCidCampeador.md metadata.yaml -f markdown -s -t html -o MioCidCampeador.html``
