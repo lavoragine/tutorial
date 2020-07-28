@@ -225,11 +225,12 @@ Si ahora reescribimos la orden:
 ````
 
 2) Y nos va a arrojar un mensaje de error:
-   ````
-   [WARNING] This document format requires a nonempty <title> element.
-  Defaulting to 'MioCidCampeador' as the title.
-  To specify a title, use 'title' in metadata or --metadata title="...".
-  ````
+````
+[WARNING] This document format requires a nonempty <title> element.
+Defaulting to 'MioCidCampeador' as the title.
+To specify a title, use 'title' in metadata or --metadata title="...".
+````
+
 Este mensaje significa que Pandoc ha sido capaz de crear el documento, pero dado que no le hemos indicado qué metadata utilizar, lo ha construido a partir de sus valores por defecto. Como, según la especificación, lo único imprescindible es que un documento tenga un título, Pandoc ha creado un título a partir del nombre del archivo.
 
 ### Metadata
