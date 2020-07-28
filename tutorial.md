@@ -308,7 +308,7 @@ Nótese que también podemos generar un archivo epub:
 
 y el resultado (si abrimos el epub y miramos en el archivo content.opf ):
 
-![epub metadata via yaml](/imgs/epub_metadata_via_yaml.png)
+![epub metadata via yaml](imgs/epub_metadata_via_yaml.png)
 
 En primer caso (conversión a html) pandoc creaba etiquetas ``<meta name="``etiqueta``" content="``valor_de_la_etiqueta``" />`` (``<meta name="author" content="Vicente Huidobro" />``), que es la manera standar para incluir metadata en html para la web. En el segundo caso, Pandoc introdujo la metadata utilizando los cuatro vocabularios reservados para metadata en la especificación epub3 (dcterms, marc relators, media y onix). Todo partiendo de un mismo archivo.
 
