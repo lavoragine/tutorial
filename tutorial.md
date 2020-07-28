@@ -197,6 +197,7 @@ Lo que ha hecho Pandoc es convertir a etiquetas HTML todo el documento markdown,
 Si ahora reescribimos la orden:
 ``pandoc MioCidCampeador.md -f markdown -s -t html -o MioCidCampeador.html``, van a pasar dos cosas:
 1. Pandoc va a crear el documento de la manera que esperamos:
+
 ````
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
@@ -222,6 +223,7 @@ Si ahora reescribimos la orden:
 <p>No necesitamos presentar al público a Vicente Huidobro, poeta de fama mundial y que fue el iniciador de la mas nueva modalidad poética. De él nacieron el creacionismo y el ultraísmo y muchos otros <em>ismos</em> más o menos legítimos que corren por el mundo.</p>
 <p>Después de cuatro años de silencio, en que tal vez asqueado del ambiente y la vida literaria el poeta se refugió en sí mismo, hoy sale otra vez al público y se presenta con una obra maestra. Maestra por su fuerza lírica, por su fuerza de pasión, por su originalidad de fondo y forma.</p>
 ````
+
 2) Y nos va a arrojar un mensaje de error:
    ````
    [WARNING] This document format requires a nonempty <title> element.
