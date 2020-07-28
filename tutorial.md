@@ -164,7 +164,7 @@ Markdown tiene una sintaxis extremadamente sencilla de aprender. Si miramos el d
 
 Para una referencia de la sintaxis markdown, [aquí](http://https://pandoc.org/MANUAL.html#pandocs-markdown) está la página de referencia.
 
-### Metadata
+### Generar HTML a partir de Markdown
 
 En un archivo HTML o EPUB (que en términos muy bastos no es otra cosa que un conjunto de archivos HTML: algo así como una página web comprimida y preparada para que la lea un dispositivo especializado) podemos distinguir dos secciones diferenciadas: el elemento ``head`` y el elemento ``body``. El ``body`` es el contenido que es renderizado por un navegador (o por un software de lectura, en el caso de un archivo 'epub') y se muestra en la pantalla del dispositivo. El elemento 'head' en cambio contiene todo lo que necesita saber el software que va a renderizar la página para mostrarla correctamente:
 
@@ -230,11 +230,25 @@ Si ahora reescribimos la orden:
   Defaulting to 'MioCidCampeador' as the title.
   To specify a title, use 'title' in metadata or --metadata title="...".
   ````
-Este mensaje significa que Pandoc es capaz de crear el documento, pero dado que no le hemos indicado qué metadata utilizar, lo ha construido a partir de sus valores por defecto. Como, según la especificación, lo único imprescindible es que un documento tenga un título, Pandoc ha creado un título a partir del nombre del archivo.
+Este mensaje significa que Pandoc ha sido capaz de crear el documento, pero dado que no le hemos indicado qué metadata utilizar, lo ha construido a partir de sus valores por defecto. Como, según la especificación, lo único imprescindible es que un documento tenga un título, Pandoc ha creado un título a partir del nombre del archivo.
 
+### Metadata
 
+Ya sabemos como Pandoc puede convertir automáticamente un documento markdown a HTML (sobre cómo se convierte a EPUB, lo veremos más adelante, pero el principio es el mismo). Lo que necesitamos ahora es aprender a alimentar a Pandoc con metadata para que este pueda escribirla en HTML (y en epub).
 
+Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluirla dentro del archivo markdown utilizando un ``yaml block``.
 
+Un ``yaml block`` se escribe al principio del archivo markdown, utilizando tres guiones para encapsularlo:
+
+````
+---
+title: mi libro
+author: yo mismo
+date: 07-28-2020
+---
+````
+Este sería el ejemplo más elemental de ``yaml block``. A partir de esta información, pandoc puede poblar las etiquetas ``title`` y ``author`` en el ``header`` y también podrá utilizar esta información para crear un bloque de título en HTML con el título del documento, el autor, y la fecha en que fue creado. ¿Por que es bueno que hagamos esto? Porque la información que incluyamos en la cabecera del documento HTML una vez sea accesible en la web, es la información que utilizará el motor de búsqueda para indexar el documento. Una página web sin metadata es una página web invisible. 
+De la misma manera, Pandoc utiliza la metadata que especifiquemos para incorporarla en el archivo epub, de manera que luego esté disponible para que el dispositivo pueda mostrárnosla (en la biblioteca del aparato, por ejemplo).
 
 
 
@@ -242,7 +256,7 @@ Este mensaje significa que Pandoc es capaz de crear el documento, pero dado que 
 
 
 La etiqueta ``title``
-Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluirla dentro del archivo markdown utilizando un ``yaml block``
+
 
 [Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por máquinas como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión yaml (``matadata.yaml``). Para nuestro caso, lo integraremos como un Yaml Block dentro de nuestro archivo markdown. La forma standard de hacerlo es al principio del documento.
 
