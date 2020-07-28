@@ -1,6 +1,6 @@
 ## 1. El problema
 
-Supongamos que hará unos diez años editamos y publicamos un libro, que ahora necesitamos reeditar. Los archivos siguen almacenados en un disco duro, de modo que bastaría recuperarlos, abrirlos en InDesign, hacer las correcciones y ajustes que hagan falta, y volver a imprimir.
+Supongamos que diez años atrás editamos y publicamos un libro, que ahora necesitamos reimprimir. Los archivos siguen almacenados en un disco duro, de modo que bastaría recuperarlos, abrirlos en InDesign, hacer las correcciones y ajustes que hiciesen falta, y volver a imprimir.
 
 En el disco duro encontramos la carpeta con el proyecto y dentro de esta carpeta, una subcarpeta llamada "tripa" donde efectivamente hay un archivo InDesign. Perfecto. El problema es que mi versión de InDesign decide que no es un archivo con quién quiera tener algún tipo de trato.
 
@@ -86,11 +86,11 @@ Y dado que de lo que se trata es de probar algo distinto (no se puede esperar un
 
 Necesitamos un archivo bien estructurado. Esto garantiza que pueda ser mapeado correctamente para la importación en InDesign, que se pueda generar un epub automáticamente, y que este epub, tal cual ha sido exportado por pandoc, sea accesible.
 
-El hecho de que trabajemos en texto plano (markdown más que un formato, es una convención para etiquetar texto plano), garantiza que estos archivos sean legibles por cualquier ordenador, sea cual sea el sistema operativo y el software que tengan instalado, ahora, hace treinta años o en el siglo XXII. Además, son tan interpretables por máquinas como legibles por humanos, y pesan ridículamente poco comparados con sus colegas con ínfulas, los procesadores de texto
+El hecho de que trabajemos en texto plano (markdown más que un formato, es una convención para etiquetar texto plano), garantiza que estos archivos sean legibles por cualquier ordenador, sea cual sea el sistema operativo y el software que tengan instalado, ahora, hace treinta años o en el siglo XXII. Además, son tan interpretables por máquinas como legibles por humanos, y pesan ridículamente poco comparados con sus colegas con ínfulas, los archivos generados por procesadores de texto como MS Word o Open Office.
 
 Y por estas razones, son también fácilmente trasladables (de una maquina a otra, de un software a otro, de un lenguaje de etiquetado a otro). Si el archivo está bien estructurado, podemos hacer en efecto lo que queramos con él.
 
-manos a la obra.
+Manos a la obra.
 
 
 ## Configurar el espacio de trabajo
@@ -115,7 +115,7 @@ Una vez creada nuestra carpeta, podemos poner nuestro documento (si: mioCidFinal
 
 De momento tenemos una carpeta, una serie de subcarpetas, y un único archivo. Pero, ¿no íbamos a partir desde markdown? En efecto. Por tanto, lo primero que haremos será convertir el documento base (mioCidFinal.docx) a markdown. Y aquí es dónde entra Pandoc.
 
-Pandoc es un software de linea de comandos (CLI), creado y mantenido por John MacFarlane, profesor de Filosofía en la Universidad de California en Berkeley. Muy brevemente, se puede describir como un conversor universal de formatos de texto. Pero es mucho más. Y puesto que fue concebido por un académico y con el objetivo de servir de herramientas a académicos, cuenta entre sus virtudes la capacidad de manejar metadata, referencias bibliograficas y sistemas de citación que mejoran casi cualquier herramienta dedicada a estas tareas. hablaremos más adelante más en detalles de qué hace y cómo lo hace, de momento (y como demostración de lo que es capaz), vamos a navegar a la carpeta ``src``, que contiene el documento ``mioCidFinal.docx`` y vamos a abrir la línea de comandos ahí. En Windows, sencillamente hay que abrir la carpeta correspondiente y hacer click en Archivo > abrir Windows Power Shell:
+Pandoc es un software de linea de comandos (CLI), creado y mantenido por John MacFarlane, profesor de Filosofía en la Universidad de California en Berkeley. Muy brevemente, se puede describir como un conversor universal de formatos de texto. Pero es mucho más. Y puesto que fue concebido por un académico y con el objetivo de servir de herramientas a académicos, cuenta entre sus virtudes la capacidad de manejar metadata, referencias bibliograficas y sistemas de citación que mejoran casi cualquier herramienta dedicada a estas tareas. Hablaremos más adelante más en detalles de qué hace y cómo lo hace, de momento (y como demostración de lo que es capaz), vamos a navegar a la carpeta ``src``, que contiene el documento ``mioCidFinal.docx`` y vamos a abrir la línea de comandos ahí. En Windows, sencillamente hay que abrir la carpeta correspondiente y hacer click en Archivo > abrir Windows Power Shell:
 
 ![linea de comandos](imgs/lineaDeComandos.png)
 
@@ -146,7 +146,7 @@ Ahora podemos abrir el directorio de nuestro proyecto con nuestro editor de text
 ![projectFolderEnAtom](imgs/abrirCarpetaDeTrabajoConElEditorDeTexto.png)
 
 Abrimos el archivo mioCidCampeador.md (doble click en el panel de la derecha) y
-podemos ver lo que pandoc ha hecho. Los encabezados están correctamente distribuidos a lo largo del documento, el formato local se ha preservado. Incluso, podemos ver que Pandoc ha inerpretado una tabla en el documento Word y la traslado a markdown correctamente:
+podemos ver lo que pandoc ha hecho. Los encabezados están correctamente distribuidos a lo largo del documento, el formato local se ha preservado. Incluso, podemos ver que Pandoc ha interpretado una tabla en el documento Word y la ha trasladado a markdown correctamente:
 
 ![tablas (convertidas desde Word) en markdown](imgs/tablasEnMarkdown.png)
 
@@ -165,8 +165,88 @@ Para una referencia de la sintaxis markdown, [aquí](http://https://pandoc.org/M
 
 ### Metadata
 
-Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluir la metadata dentro del archivo markdown utilizando un ``yaml block``
+En un archivo HTML o EPUB (que en términos muy bastos no es otra cosa que un conjunto de archivos HTML: algo así como una página web comprimida y preparada para que la lea un dispositivo especializado) podemos distinguir dos secciones diferenciadas: el elemento ``head`` y el elemento ``body``. El ``body`` es el contenido que es renderizado por un navegador (o por un software de lectura, en el caso de un archivo 'epub') y se muestra en la pantalla del dispositivo. El elemento 'head' en cambio contiene todo lo que necesita saber el software que va a renderizar la página para mostrarla correctamente:
 
-[Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por máquinas como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión yaml (``matadata.yaml``). Para nuestro caso, lo integraremos como un Yaml Block dentro de nuestro archivo markdown. la forma standard de hacerlo es al principio del documento.
+```
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>mi libro</title>
+
+  </head>
+  <body>
+    <h1> Este es el título del documento</h1>
+    <p> y aqui viene el cuerpo de texto</p>
+    </body>
+</html>
+```
+Este ejemplo muestra cómo se estructura un archivo 'html' muy básico. Pandoc es capaz de convertir un archivo markdown a HTML, incluyendo en éste toda la estructura semántica que hemos añadido al texto. Si convertimos el archivo del *Mio Cid Campeador* a HTML utilizando Pandoc (lo podemos hacer situándonos con el Power Shell en la carpeta donde está el archivo markdown y escribiendo: ``pandoc MioCidCampeador.md -f markdown -t html -o MioCidCampeador.html``), va a convertir el archivo de esta manera:
+
+````
+<h2 id="nota-de-los-editores1">Nota de los editores<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>No necesitamos presentar al público a Vicente Huidobro, poeta de fama mundial y que fue el iniciador de la mas nueva modalidad poética. De él nacieron el creacionismo y el ultraísmo y muchos otros <em>ismos</em> más o menos legítimos que corren por el mundo.</p>
+<p>Después de cuatro años de silencio, en que tal vez asqueado del ambiente y la vida literaria el poeta se refugió en sí mismo, hoy sale otra vez al público y se presenta con una obra maestra. Maestra por su fuerza lírica, por su fuerza de pasión, por su originalidad de fondo y forma.</p>
+````
+
+¿Donde está el elemnto ``head``?
+Lo que ha hecho Pandoc es convertir a etiquetas HTML todo el documento markdown, pero dado que no le hemos dicho explícitamente que queríamos un documento independiente, con sus elementos ``head`` y ``body``, no lo ha hecho. Esto puede parecer una limitación, pero en efecto es extremadamente útil cuando lo que queremos es sencillamente HTML puro para insertarlo en otro documento. Para que haga el trabajo completo, tenemos que agregar la opción ``-s`` (por ``standalone``, lo que a pandoc le dice que lo queremos es un documento independiente).
+
+Si ahora reescribimos la orden:
+``pandoc MioCidCampeador.md -f markdown -s -t html -o MioCidCampeador.html``, van a pasar dos cosas:
+1. Pandoc va a crear el documento de la manera que esperamos:
+````
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MioCidCampeador</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="nota-de-los-editores1">Nota de los editores<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>No necesitamos presentar al público a Vicente Huidobro, poeta de fama mundial y que fue el iniciador de la mas nueva modalidad poética. De él nacieron el creacionismo y el ultraísmo y muchos otros <em>ismos</em> más o menos legítimos que corren por el mundo.</p>
+<p>Después de cuatro años de silencio, en que tal vez asqueado del ambiente y la vida literaria el poeta se refugió en sí mismo, hoy sale otra vez al público y se presenta con una obra maestra. Maestra por su fuerza lírica, por su fuerza de pasión, por su originalidad de fondo y forma.</p>
+````
+2) Y nos va a arrojar un mensaje de error:
+   ````
+   [WARNING] This document format requires a nonempty <title> element.
+  Defaulting to 'MioCidCampeador' as the title.
+  To specify a title, use 'title' in metadata or --metadata title="...".
+  ````
+Este mensaje significa que Pandoc es capaz de crear el documento, pero dado que no le hemos indicado qué metadata utilizar, lo ha construido a partir de sus valores por defecto. Como, según la especificación, lo único imprescindible es que un documento tenga un título, Pandoc ha creado un título a partir del nombre del archivo.
+
+
+
+
+
+
+
+
+
+
+La etiqueta ``title``
+Existen varias maneras de preparar un archivo de metadata, la manera más simple es incluirla dentro del archivo markdown utilizando un ``yaml block``
+
+[Yaml](https://en.wikipedia.org/wiki/YAML) es un lenguaje de serialización de datos, diseñado para ser legible tanto por máquinas como por humanos y es el lenguaje que utiliza por defecto Pandoc para manipular metadatos. Se puede utilizar dentro de un archivo markdown pero también como un archivo independiente. En este último caso, el archivo tiene la extensión yaml (``matadata.yaml``). Para nuestro caso, lo integraremos como un Yaml Block dentro de nuestro archivo markdown. La forma standard de hacerlo es al principio del documento.
 
 ![yaml block](imgs/yaml_block.png)
+
+¿Qué estamos haciendo aquí?
+
+La sintaxis de Yaml es muy sencilla y se basa en la asignación de valores a determinadas etiquetas (o variables). En este caso, tenemos la etiqueta 'title' (título) con el valor: "Mío Cid Campeador"; la etiqueta 'creator' (creador) a la que asignamos dos valores (role, que es el tipo de creador, y 'text' que es *contenido* de la etiqueta; en Yaml podemos también definir listas de metadata para especificar valores).
+
+###
