@@ -132,7 +132,8 @@ Si ahora miramos de nuevo en la carpeta, veremos que un nuevo archivo (``mioCidC
 - hemos invocado el programa que vamos a utilizar (``pandoc``)
 - le hemos dicho a qué archivo tiene que aplicar las opciones que vamos a definir (``mioCidFinal.docx``)
 - le hemos dicho desde qué formato tiene que partir y cómo tratarlo: ``-f``, de *from*, desde, en inglés; ``docx``, es el formato de partida; la opción ``empty_paragraphs`` le dice a Pandoc que queremos que limpie el archivo de todas las líneas vacías. Pandoc va a preservar todos los estilos predeterminados (encabezados) y estilos locales (itálicas y negritas), traduciéndolos a etiquetas en markdown, pero va a ignorar todos los estilos personalizados que hubiéramos podido definir en el documento (en caso de que quisieramos conservar los estilos personalizados de word, hay una opción: ``+styles``).
-- le hemos dicho a qué formato tiene que convertir el documento: ``-t markdown``, a markdown.
+- le hemos dicho a qué formato
+  tiene que convertir el documento: ``-t markdown``, a markdown.
 - Le hemos dicho que elimine el ajuste de línea (word wrap) o saltos de línea no semánticos: ``wrap=none``
 - Que uniforme los encabezados (markdown tiene dos maneras de etiquetar encabezados, atx o setext-style headers): ``--atx``
 - y que con toda esta información, cree un archivo llamado ``mioCidCampeador.md``
